@@ -11,11 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class MemoController {
+    // MemoController -> MemoService -> MemoRepository 강하게 결합이 되어있다.
 
     private final MemoService memoService;
 
-    public MemoController(JdbcTemplate jdbcTemplate) {
-        this.memoService = new MemoService(jdbcTemplate);
+    public MemoController(MemoService memoService) {
+        this.memoService = memoService;
     }
 
     @PostMapping("/memos")
